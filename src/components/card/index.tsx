@@ -15,25 +15,28 @@ export const Card = ({ id, labelData, nome, dataEvento }: ICardProps) => {
   // const date = Number(new Date('Jan 27 2023 18:59:00 GMT-0300'));
 
   return (
-    <Link to={`/${id}`}>
+    <>
       {new Date() >= new Date(dataEvento) ? (
-        <Box sx={styles.card}>
-          <span>{labelData}</span>
-          <Box sx={styles.box}>
-            <Box sx={styles.intro}>
-              <span>
-                <IoIosCheckmarkCircleOutline size={24} />
-                Aula Liberada
-              </span>
-              <span>Aula Prática</span>
+        <Link to={`/${id}`}>
+          <Box sx={styles.card}>
+            <span>{labelData}</span>
+            <Box sx={styles.box}>
+              <div>{nome}</div>
+              <Box sx={styles.intro}>
+                <span>
+                  <IoIosCheckmarkCircleOutline size={24} />
+                  Aula Liberada
+                </span>
+                <span>Aula Prática</span>
+              </Box>
             </Box>
-            <div>{nome}</div>
           </Box>
-        </Box>
+        </Link>
       ) : (
         <Box sx={styles.card}>
           <span>{labelData}</span>
           <Box sx={styles.box}>
+            <div>{nome}</div>
             <Box sx={styles.intro}>
               <span>
                 <IoMdLock size={24} />
@@ -41,10 +44,9 @@ export const Card = ({ id, labelData, nome, dataEvento }: ICardProps) => {
               </span>
               <span>Aula Prática</span>
             </Box>
-            <div>{nome}</div>
           </Box>
         </Box>
       )}
-    </Link>
+    </>
   );
 };

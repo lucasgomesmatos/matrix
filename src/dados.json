@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "labelData": "23 de Janeiro de 2023 - 19:00h",
+    "nome": "Criatividade",
+    "dataEvento": 1674411459840,
+    "linkAula": "V8uVAf8QhsI"
+  },
+  {
+    "id": 2,
+    "labelData": "25 de Janeiro de 2023 - 19:00h",
+    "nome": "aula 02",
+    "dataEvento": 1674683940000,
+    "linkAula": "ZtMzB5CoekE"
+  },
+  {
+    "id": 3,
+    "labelData": "27 de Janeiro de 2023 - 19:00h",
+    "nome": "aula 03",
+    "dataEvento": 1674856740000,
+    "linkAula": "rHANBi7E2cI"
+  }
+]

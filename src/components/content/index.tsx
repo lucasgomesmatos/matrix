@@ -3,34 +3,47 @@ import * as styles from './style';
 import { Card } from '../card';
 import { Button } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useParams, useNavigate, json } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { VideoPlayer } from '../videoPlayer';
 
 export const Content = () => {
   const data = [
     {
       id: 1,
       labelData: '23 de Janeiro de 2023 - 19:00h',
-      nome: 'aula 01',
+      nome: 'Aula 1 - Criatividade',
       dataEvento: 1674511140000,
+      linkAula: 'V8uVAf8QhsI',
     },
     {
       id: 2,
       labelData: '25 de Janeiro de 2023 - 19:00h',
-      nome: 'aula 02',
+      nome: 'Aula 2 - Agilidade',
       dataEvento: 1674683940000,
+      linkAula: 'V8uVAf8QhsI',
     },
     {
       id: 3,
       labelData: '27 de Janeiro de 2023 - 19:00h',
-      nome: 'aula 03',
+      nome: 'Aula 3 - Transformação',
       dataEvento: 1674856740000,
+      linkAula: 'V8uVAf8QhsI',
     },
   ];
 
   const links = ['1', '2', '3'];
   const navigate = useNavigate();
   const { id } = useParams();
+  const [currentVideo, setCurrentVideo] = useState('');
+
+  useEffect(() => {
+    const video = data
+      ?.filter((item) => item.id === Number(id))
+      .flatMap((item) => item.linkAula);
+
+    setCurrentVideo(video.toString());
+  }, [id]);
 
   useEffect(() => {
     if (!links.includes(id!)) {
@@ -45,18 +58,10 @@ export const Content = () => {
       {matches ? (
         <Box sx={styles.main}>
           <Box sx={styles.video}>
-            <iframe
-              width="960"
-              height="630"
-              src={`https://www.youtube-nocookie.com/embed/YDTW9e_17e8`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <VideoPlayer link={currentVideo} />
           </Box>
           <Box sx={styles.menu}>
-            {data.map((item) => (
+            {data?.map((item) => (
               <Card
                 id={item.id}
                 key={item.id}
@@ -65,28 +70,30 @@ export const Content = () => {
                 dataEvento={item.dataEvento}
               />
             ))}
-            <Button sx={styles.button} variant="outlined">
-              Materiais
-            </Button>
+            <a
+              href="https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB"
+              target="_blank"
+            >
+              <Button sx={styles.buttonMobile} variant="outlined">
+                Materiais
+              </Button>
+            </a>
           </Box>
         </Box>
       ) : (
         <Box sx={styles.mainMobile}>
           <Box sx={styles.videoMobile}>
-            <iframe
-              width="960"
-              height="630"
-              src={`https://www.youtube-nocookie.com/embed/YDTW9e_17e8`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <VideoPlayer link={currentVideo} />
           </Box>
           <Box>
-            <Button sx={styles.buttonMobile} variant="outlined">
-              Materiais
-            </Button>
+            <a
+              href="https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB"
+              target="_blank"
+            >
+              <Button sx={styles.buttonMobile} variant="outlined">
+                Materiais
+              </Button>
+            </a>
           </Box>
         </Box>
       )}

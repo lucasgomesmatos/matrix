@@ -10,7 +10,7 @@ export const main: SxProps = {
   maxWidth: '1400px',
   height: '100%',
   margin: '0 auto',
-  gap: '30px',
+  gap: '20px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -26,7 +26,8 @@ export const mainMobile: SxProps = {
 };
 
 export const video: SxProps = {
-  width: '80%',
+  width: '85%',
+  objectFit: 'cover',
 };
 
 export const videoMobile: SxProps = {
@@ -44,7 +45,7 @@ export const videoMobile: SxProps = {
 };
 
 export const menu: SxProps = {
-  width: '30%',
+  width: '25%',
   height: '100%',
   display: 'flex',
   flexDirection: 'column',

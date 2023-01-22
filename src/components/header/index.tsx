@@ -16,20 +16,23 @@ export const Header = () => {
     {
       id: 1,
       labelData: '23 de Janeiro de 2023 - 19:00h',
-      nome: 'aula 01',
+      nome: 'Aula 1 - Criatividade',
       dataEvento: 1674511140000,
+      linkAula: 'V8uVAf8QhsI',
     },
     {
       id: 2,
       labelData: '25 de Janeiro de 2023 - 19:00h',
-      nome: 'aula 02',
+      nome: 'Aula 2 - Agilidade',
       dataEvento: 1674683940000,
+      linkAula: 'V8uVAf8QhsI',
     },
     {
       id: 3,
       labelData: '27 de Janeiro de 2023 - 19:00h',
-      nome: 'aula 03',
+      nome: 'Aula 3 - Transformação',
       dataEvento: 1674856740000,
+      linkAula: 'V8uVAf8QhsI',
     },
   ];
 
@@ -48,13 +51,15 @@ export const Header = () => {
                   <HiOutlineXMark size={32} color="var(--green-100)" />
                 </Button>
                 {data.map((item) => (
-                  <Card
-                    id={item.id}
-                    key={item.id}
-                    labelData={item.labelData}
-                    nome={item.nome}
-                    dataEvento={item.dataEvento}
-                  />
+                  <Box onClick={handleToggle} key={item.id}>
+                    <Card
+                      id={item.id}
+                      key={item.id}
+                      labelData={item.labelData}
+                      nome={item.nome}
+                      dataEvento={item.dataEvento}
+                    />
+                  </Box>
                 ))}
               </Box>
             </Drawer>
