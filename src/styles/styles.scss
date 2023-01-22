@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sora", sans-serif;
+}
+
+:root {
+  --green-100: #44f24f;
+  --green-200: #36bf4a;
+  --green-500: #12732a;
+  --text: #757575;
+  --bg-1: #0d0d0d;
+  --bg-2: #19191c;
+  --white: #ffffff;
+}
+
+body {
+  background: var(--bg-1);
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
