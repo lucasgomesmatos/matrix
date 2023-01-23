@@ -53,6 +53,20 @@ export const Content = () => {
 
   const matches = useMediaQuery('(min-width:1400px)');
 
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    // increment the count by 1
+    const countTimer = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+      // every 1000 milliseconds
+    }, 6000000);
+    return function cleanup() {
+      clearInterval(countTimer);
+    };
+  }, []);
+
+  console.log(count);
+
   return (
     <Box sx={styles.container}>
       {matches ? (
@@ -74,7 +88,11 @@ export const Content = () => {
               href="https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB"
               target="_blank"
             >
-              <Button sx={styles.buttonMobile} variant="outlined">
+              <Button
+                sx={styles.buttonMobile}
+                variant="outlined"
+                disabled={!Boolean(count)}
+              >
                 Materiais
               </Button>
             </a>
@@ -90,7 +108,11 @@ export const Content = () => {
               href="https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB"
               target="_blank"
             >
-              <Button sx={styles.buttonMobile} variant="outlined">
+              <Button
+                sx={styles.buttonMobile}
+                variant="outlined"
+                disabled={!Boolean(count)}
+              >
                 Materiais
               </Button>
             </a>
