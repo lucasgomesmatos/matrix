@@ -15,13 +15,17 @@ export const Content = () => {
       nome: 'Aula 1 - Criatividade',
       dataEvento: 1674511140000,
       linkAula: 'V8uVAf8QhsI',
+      material:
+        'https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB',
     },
     {
       id: 2,
       labelData: '25 de Janeiro de 2023 - 19:00h',
       nome: 'Aula 2 - Agilidade',
       dataEvento: 1674683940000,
-      linkAula: 'V8uVAf8QhsI',
+      linkAula: 'o1TTXiUV8vc',
+      material:
+        'https://drive.google.com/drive/folders/1r5VL0hlaWhW9NCDsJ2HVG16fyr_XTHmP',
     },
     {
       id: 3,
@@ -29,6 +33,8 @@ export const Content = () => {
       nome: 'Aula 3 - Transformação',
       dataEvento: 1674856740000,
       linkAula: 'V8uVAf8QhsI',
+      material:
+        'https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB',
     },
   ];
 
@@ -53,20 +59,6 @@ export const Content = () => {
 
   const matches = useMediaQuery('(min-width:1400px)');
 
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    // increment the count by 1
-    const countTimer = setInterval(() => {
-      setCount((prevCount) => prevCount + 1);
-      // every 1000 milliseconds
-    }, 6000000);
-    return function cleanup() {
-      clearInterval(countTimer);
-    };
-  }, []);
-
-  console.log(count);
-
   return (
     <Box sx={styles.container}>
       {matches ? (
@@ -85,14 +77,12 @@ export const Content = () => {
               />
             ))}
             <a
-              href="https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB"
+              href={`${data
+                .filter((item) => item.id === Number(id))
+                .flatMap((item) => item.material.toString())}`}
               target="_blank"
             >
-              <Button
-                sx={styles.buttonMobile}
-                variant="outlined"
-                disabled={!Boolean(count)}
-              >
+              <Button sx={styles.buttonMobile} variant="outlined">
                 Materiais
               </Button>
             </a>
@@ -105,14 +95,12 @@ export const Content = () => {
           </Box>
           <Box>
             <a
-              href="https://drive.google.com/drive/folders/1k1zeW9m48U4IAiZihiOWgNfEfgG2etRB"
+              href={`${data
+                .filter((item) => item.id === Number(id))
+                .flatMap((item) => item.material.toString())}`}
               target="_blank"
             >
-              <Button
-                sx={styles.buttonMobile}
-                variant="outlined"
-                disabled={!Boolean(count)}
-              >
+              <Button sx={styles.buttonMobile} variant="outlined">
                 Materiais
               </Button>
             </a>
